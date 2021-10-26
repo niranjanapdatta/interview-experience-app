@@ -37,14 +37,24 @@ public class InterviewExperienceServiceImplementation implements InterviewExperi
 
 	@Override
 	public InterviewExperience updateInterviewExperience(long _id, InterviewExperience interviewExperience) {
-		// TODO Auto-generated method stub
-		return null;
+		InterviewExperience existingInterviewExperience = findInterviewExperience(_id);
+		
+		existingInterviewExperience.setIntervieweeId(interviewExperience.getIntervieweeId());
+		existingInterviewExperience.setCompanyId(interviewExperience.getCompanyId());
+		existingInterviewExperience.setRole(interviewExperience.getRole());
+		existingInterviewExperience.setPay(interviewExperience.getPay());
+		existingInterviewExperience.setOverallExperience(interviewExperience.getOverallExperience());
+		existingInterviewExperience.setTips(interviewExperience.getTips());
+		existingInterviewExperience.setRounds(interviewExperience.getRounds());
+		
+		return interviewExperienceRepository.save(existingInterviewExperience);
 	}
 
 	@Override
 	public void deleteInterviewExperience(long _id) {
-		// TODO Auto-generated method stub
+		findInterviewExperience(_id);
 		
+		interviewExperienceRepository.deleteById(_id);
 	}
 	
 }

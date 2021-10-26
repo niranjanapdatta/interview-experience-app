@@ -2,9 +2,11 @@ package com.jobs.interviewexperienceapp.resources;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,6 +40,16 @@ public class InterviewExperienceResource {
 		return interviewExperienceService.findInterviewExperience(_id);
 	}
 
-	
+	@PutMapping("/{_id}")
+	public InterviewExperience putInterviewExperience(@PathVariable("_id") long _id, @RequestBody InterviewExperience interviewExperience) {
+		return interviewExperienceService.updateInterviewExperience(_id, interviewExperience);
+	}
+
+	@DeleteMapping("/{_id}")
+	public String deleteInterviewExperience(@PathVariable("_id") long _id) {
+		interviewExperienceService.deleteInterviewExperience(_id);
+		
+		return "Deleted Interview Experience with _id: " + _id; 
+	}
 	
 }
