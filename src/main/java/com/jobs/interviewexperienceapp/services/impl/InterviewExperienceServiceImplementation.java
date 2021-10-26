@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.jobs.interviewexperienceapp.exceptions.CustomException;
 import com.jobs.interviewexperienceapp.models.InterviewExperience;
 import com.jobs.interviewexperienceapp.repositories.InterviewExperienceRepository;
 import com.jobs.interviewexperienceapp.services.InterviewExperienceService;
@@ -31,7 +32,7 @@ public class InterviewExperienceServiceImplementation implements InterviewExperi
 
 	@Override
 	public InterviewExperience findInterviewExperience(long _id) {
-		return null;
+		return interviewExperienceRepository.findById(_id).orElseThrow(() -> new CustomException("Interview Experience", "_id", _id));
 	}
 
 	@Override

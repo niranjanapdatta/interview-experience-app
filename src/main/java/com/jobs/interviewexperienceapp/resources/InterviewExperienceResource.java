@@ -3,6 +3,7 @@ package com.jobs.interviewexperienceapp.resources;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,6 @@ public class InterviewExperienceResource {
 
 	@PostMapping
 	public InterviewExperience postInterviewExperience(@RequestBody InterviewExperience interviewExperience) {
-		System.out.println(interviewExperience.toString());
 		return interviewExperienceService.saveInterviewExperience(interviewExperience);
 	}
 	
@@ -32,5 +32,12 @@ public class InterviewExperienceResource {
 	public List<InterviewExperience> getInterviewExperiences() {
 		return interviewExperienceService.findInterviewExperiences();
 	}
+
+	@GetMapping("/{_id}")
+	public InterviewExperience getInterviewExperienceById(@PathVariable("_id") long _id) {
+		return interviewExperienceService.findInterviewExperience(_id);
+	}
+
+	
 	
 }
