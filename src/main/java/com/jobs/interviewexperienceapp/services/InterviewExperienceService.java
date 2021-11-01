@@ -16,4 +16,6 @@ public interface InterviewExperienceService {
 	
 	void deleteInterviewExperience(long _id);
 	
+	List<InterviewExperience> getInterviewExperiencesByIntervieweeId(long intervieweeId);
+	
 }

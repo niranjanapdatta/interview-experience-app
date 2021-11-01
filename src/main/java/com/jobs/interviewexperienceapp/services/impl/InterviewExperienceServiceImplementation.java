@@ -56,5 +56,10 @@ public class InterviewExperienceServiceImplementation implements InterviewExperi
 		
 		interviewExperienceRepository.deleteById(_id);
 	}
+
+	@Override
+	public List<InterviewExperience> getInterviewExperiencesByIntervieweeId(long intervieweeId) {
+		return interviewExperienceRepository.findInterviewExperiencesByIntervieweeId(intervieweeId);
+	}
 	
 }

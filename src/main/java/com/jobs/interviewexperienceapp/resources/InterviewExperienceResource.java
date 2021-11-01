@@ -42,6 +42,11 @@ public class InterviewExperienceResource {
 		return new ResponseEntity<InterviewExperience>(interviewExperienceService.findInterviewExperience(_id), HttpStatus.OK);
 	}
 
+	@GetMapping("/interviewee/{intervieweeId}")
+	public List<InterviewExperience> getInterviewExperiencesByIntervieweeId(@PathVariable("intervieweeId") long intervieweeId) {
+		return interviewExperienceService.getInterviewExperiencesByIntervieweeId(intervieweeId);
+	}
+	
 	@PutMapping("/{_id}")
 	public ResponseEntity<InterviewExperience> putInterviewExperience(@PathVariable("_id") long _id, @RequestBody InterviewExperience interviewExperience) {
 		return new ResponseEntity<InterviewExperience>(interviewExperienceService.updateInterviewExperience(_id, interviewExperience), HttpStatus.CREATED);
